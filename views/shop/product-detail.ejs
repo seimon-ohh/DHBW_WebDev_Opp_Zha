@@ -1,13 +1,64 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Produkt-Details</title>
-</head>
-<body>
 
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="produktgruppeStyle.css">
+    <title>Simon's Musikshop</title>
+</head>
+
+
+<%- include('../includes/navigation.ejs') %>
+
+<div class="produktbild">
+    <img src="/img/Violin.png">
+</div>
+
+<div class="beschreibung">
+    <h2>Produktnamen</h2>
+    <br>
+    <h5>Schon ab 25€ pro Monat</h5>
+    <br>
+    <h5>Produktbeschreibung: Guter Zustand, Mir ist bei einem Saxophon wichtig, <br>
+        dass die Tonerzeugung leicht und flüssig geht, ohne viel Widerstand. <br>
+        Der Klang soll warm, voll, rund und satt und in allen Registern ausgeglichen sein. </h5>
+    <br>
+    <audio controls>
+        <source src="/audio/To Loom Is to Love - The Mini Vandals.mp3" type="audio/ogg">
+        <!-- <source src="/audio/To Loom Is to Love - The Mini Vandals.mp3" type="audio/mpeg"> -->
+        Your browser does not support the audio element.
+    </audio>
+
+    <ol>
+        <br>
+        <h5>Flexible Laufzeit</h5>
+        <h5>Kaufoption nach der Miete</h5>
+        <h5>2-5 Tage versand</h5>
+        <h5>Versicherungsschutz (optional)</h5>
+    </ol>
+    <br>
+    <button class="btn" href="checkout.html">In den Warenkorb</button>
+
+    <h5>Artikelnummer 1415hsaf</h5>
+</div>
+
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
 </body>
+
 </html>
