@@ -1,146 +1,138 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>W3.CSS Template</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<%- include('../includes/head.ejs') %>
+
 </head>
 <body>
 
-<!-- Navbar (sit on top) -->
-<div class="w3-top">
-    <div class="w3-bar w3-white w3-wide w3-padding w3-card">
-        <a href="#home" class="w3-bar-item w3-button">Simons Musikshop</a>    <!-- Logo aus dem Public-Ordner einfügen-->
-
-        <!-- Float links to the right. Hide them on small screens -->
-        <div class="w3-right w3-hide-small">
-            <a href="#projects" class="w3-bar-item w3-button">Instrumente</a>
-            <a href="#about" class="w3-bar-item w3-button">Über uns</a>
-            <a href="#contact" class="w3-bar-item w3-button">Kontakt</a>
-            <a href="/cart" class="w3-bar-item w3-button">Warenkorb</a>
-            <a href="/account" class="w3-bar-item w3-button">Account</a>
-        </div>
-    </div>
-</div>
-
+<%- include('../includes/navigation.ejs') %>
 <!-- Header -->
 <header class="w3-display-container w3-content w3-wide" style="max-width:1500px;" id="home">
     <img class="w3-image" src="/images/Instruments.jpg" alt="Architecture" width="1500" height="800">
     <div class="w3-display-middle w3-margin-top w3-center">
-        <h1 class="w3-xxlarge w3-text-white"><span class="w3-padding w3-black w3-opacity-min"><b>LOGO</b></span> <span class="w3-hide-small w3-text-light-grey">Simons Musikshop</span></h1>
+        <h1 class="w3-xxlarge w3-text-white"><img src="/images/logo.png" alt="Logo"></span> <span
+                    class="w3-hide-small w3-text-light-grey">imon's Musikshop</span></h1>
     </div>
 </header>
 
 <!-- Page content -->
 <div class="w3-content w3-padding" style="max-width:1564px">
 
-    <!-- Project Section -->
-    <div class="w3-container w3-padding-32" id="projects">
-        <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Instrumente</h3>
+
+    <div class="w3-container w3-padding-32" id="instruments">
+        <h2 class="w3-border-bottom w3-border-light-grey w3-padding-16">Instrumente</h2>
     </div>
 
-    <div class="w3-row-padding">
-        <div class="w3-col l3 m6 w3-margin-bottom">
+    <div class="w3-row-padding w3-margin-bottom">
+        <div class="w3-col s4">
+
             <div class="w3-display-container">
-                <div class="w3-display-topleft w3-black w3-padding">Summer House</div> <!-- Überschriften ändern und Produktbilder einbinden -->
-                <img src="/w3images/house5.jpg" alt="House" style="width:100%">
+                <div class="w3-display-topleft w3-black w3-padding">Blasinstrumente</div>
+                <a href="/blasinstrumente">
+                    <img src="/images/Blas.jpg" alt="Blasinstrumente" style="width:350px" height="280px">
+                </a>
+            </div>
+
+        </div>
+        <div class="w3-col s4 w3-margin-bottom">
+            <div class="w3-display-container">
+                <div class="w3-display-topleft w3-black w3-padding">Saiteninstrumente</div>
+                <a href="/saiteninstrumente">
+                    <img src="/images/Saiten.jpg" alt="Saiteninstrumente" style="width: 350px" height="280px">
+                </a>
             </div>
         </div>
-        <div class="w3-col l3 m6 w3-margin-bottom">
+        <div class="w3-col s4 w3-margin-bottom">
             <div class="w3-display-container">
-                <div class="w3-display-topleft w3-black w3-padding">Brick House</div>
-                <img src="/w3images/house2.jpg" alt="House" style="width:100%">
+                <div class="w3-display-topleft w3-black w3-padding">Schlaginstrumente</div>
+                <a href="/schlaginstrumente">
+                    <img src="/images/Schlag.jpg" alt="Schlaginstrumente" style="width:350px" height="280px">
+                </a>
             </div>
         </div>
-        <div class="w3-col l3 m6 w3-margin-bottom">
-            <div class="w3-display-container">
-                <div class="w3-display-topleft w3-black w3-padding">Renovated</div>
-                <img src="/w3images/house3.jpg" alt="House" style="width:100%">
-            </div>
-        </div>
-        <div class="w3-col l3 m6 w3-margin-bottom">
-            <div class="w3-display-container">
-                <div class="w3-display-topleft w3-black w3-padding">Barn House</div>
-                <img src="/w3images/house4.jpg" alt="House" style="width:100%">
-            </div>
-        </div>
+
     </div>
-    <!-- vielleicht unnötig, weil wir nur 3 produktkategorien haben-->
-    <div class="w3-row-padding">
-        <div class="w3-col l3 m6 w3-margin-bottom">
-            <div class="w3-display-container">
-                <div class="w3-display-topleft w3-black w3-padding">Summer House</div>
-                <img src="/w3images/house2.jpg" alt="House" style="width:99%">
-            </div>
-        </div>
-        <div class="w3-col l3 m6 w3-margin-bottom">
-            <div class="w3-display-container">
-                <div class="w3-display-topleft w3-black w3-padding">Brick House</div>
-                <img src="/w3images/house5.jpg" alt="House" style="width:99%">
-            </div>
-        </div>
-        <div class="w3-col l3 m6 w3-margin-bottom">
-            <div class="w3-display-container">
-                <div class="w3-display-topleft w3-black w3-padding">Renovated</div>
-                <img src="/w3images/house4.jpg" alt="House" style="width:99%">
-            </div>
-        </div>
-        <div class="w3-col l3 m6 w3-margin-bottom">
-            <div class="w3-display-container">
-                <div class="w3-display-topleft w3-black w3-padding">Barn House</div>
-                <img src="/w3images/house3.jpg" alt="House" style="width:99%">
-            </div>
+
+    <div class="box2">
+        <!-- Text einfügen über uns und Map einbinden -->
+        <div class="w3-container w3-padding-32" id="about">
+            <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Über uns</h3>
+            <p> Hallo wir sind Simon's Musikshop. Diese Webseite wurde im Zusammenhang der Web Development Vorlesung von
+                uns erstellt. Wir beide hatten
+                davor keine Kenntnisse über HTML, CSS, VIEW ENGINE (EJS), JS, NODE und EXPRESS und haben beide von Null
+                angefangen. Zunächst einmal fingen wir mit dem 11.5 Stunden YouTube Tutorial über HTML und CSS
+                angefangen (https://www.youtube.com/watch?v=mU6anWqZJcc&ab_channel=freeCodeCamp.org). Danach haben wir
+                uns ein UDEMY Kurs von 20 Stunden über "Node JS the complete Guide" angeschaut.
+                Weitere Hilfsmittel waren w3-schools und Bootstrap.
+            </p>
         </div>
     </div>
 
-    <!-- Text einfügen über uns und Map einbinden -->
-    <div class="w3-container w3-padding-32" id="about">
-        <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Über uns</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint
-            occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-            laboris nisi ut aliquip ex ea commodo consequat.
-        </p>
-    </div>
+    <br>
     <!-- Text und bilder von uns einfügen
      -->
-    <div class="w3-row-padding w3-grayscale">
-        <div class="w3-col l3 m6 w3-margin-bottom">
-            <img src="/w3images/team2.jpg" alt="John" style="width:100%">
-            <h3>Simon</h3>
+    <div class="w3-row-padding">
+        <div class="w3-col s6 w3-center">
+            <img src="/images/Simon_O.png" alt="Simon O." style="width:250px" height="300px">
+            <h3>Simon Oppermann</h3>
             <p class="w3-opacity">CEO</p>
-            <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
-            <p><button class="w3-button w3-light-grey w3-block">Contact</button></p>
+            <p>Simon Oppermann ist ein junger Student, der seinen Ursprung in Neumarkt hat. Derzeitig studiert er an der
+                DHBW Mannheim Wirtschaftsinformatik bei BASF. </p>
+            <p>
+                <button class="w3-button w3-light-grey w3-block">Kontakt</button>
+            </p>
         </div>
-        <div class="w3-col l3 m6 w3-margin-bottom">
-            <img src="/w3images/team1.jpg" alt="Jane" style="width:100%">
-            <h3>Simon</h3>
+        <div class="w3-col s6 w3-center">
+            <img src="/images/Simon.jpg" alt="Simon Z." style="width:250px" height="300px">
+            <h3>Simon Zhang</h3>
             <p class="w3-opacity">CEO</p>
-            <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
-            <p><button class="w3-button w3-light-grey w3-block">Contact</button></p>
+            <p>Simon Zhang ist ein Dualer Student der bei Merck arbeitet und an der DHBW Mannheim Wirtschaftsinformatik
+                studiert. Simon wohnt derzeitig in Büttelborn.</p>
+            <p>
+                <button class="w3-button w3-light-grey w3-block">Kontakt</button>
+            </p>
         </div>
 
     </div>
 
     <!-- Auf Deutsch übersetzen -->
     <div class="w3-container w3-padding-32" id="contact">
-        <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Contact</h3>
-        <p>Lets get in touch and talk about your next project.</p>
+        <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Kontakt</h3>
+        <p>Erreiche uns hier! Wir sind bei allen Anliegen erreichbar!</p>
         <form action="/action_page.php" target="_blank">
             <input class="w3-input w3-border" type="text" placeholder="Name" required name="Name">
             <input class="w3-input w3-section w3-border" type="text" placeholder="Email" required name="Email">
-            <input class="w3-input w3-section w3-border" type="text" placeholder="Subject" required name="Subject">
-            <input class="w3-input w3-section w3-border" type="text" placeholder="Comment" required name="Comment">
+            <input class="w3-input w3-section w3-border" type="text" placeholder="Betreff" required name="Betreff">
+            <input class="w3-input w3-section w3-border" type="text" placeholder="Kommentar" required name="Kommentar">
             <button class="w3-button w3-black w3-section" type="submit">
-                <i class="fa fa-paper-plane"></i> SEND MESSAGE
+                <i class="fa fa-paper-plane"></i> Senden
             </button>
         </form>
     </div>
 
-    <!-- GOOGLE MAPS einbinden evtl -->
-    <div class="w3-container">
-        <img src="/images/denise-jans-RQ0_Fp2Hr2M-unsplash.jpg" class="w3-image" style="width:100%">
+    <div class="map">
+        <div style="width: 700px;position: relative;">
+            <iframe width="800" height="500"
+                    src="https://maps.google.com/maps?width=700&amp;height=440&amp;hl=en&amp;q=DHBW%20Mannheim%2C%20Coblitzallee%2C%20Mannheim+(Anfahrt)&amp;ie=UTF8&amp;t=&amp;z=10&amp;iwloc=B&amp;output=embed"
+                    frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+            <div
+                    style="position: absolute;width: 80%;bottom: 10px;left: 0;right: 0;margin-left: auto;margin-right: auto;color: #000;text-align: center;">
+                <small style="line-height: 1.8;font-size: 2px;background: #fff;">Powered by <a
+                            href="http://www.googlemapsgenerator.com/pt/">googlemapsgen (pt)</a> & <a
+                            href="https://australianrealmoneycasino.com/">australianrealmoneycasino.com</a></small>
+            </div>
+            <style>
+                #gmap_canvas img {
+                    max-width: none !important;
+                    background: none !important
+                }
+            </style>
+        </div>
+        <br/>
     </div>
+
+    <!-- GOOGLE MAPS einbinden evtl -->
+    <!-- <div class="w3-container">
+        <img src="/images/denise-jans-RQ0_Fp2Hr2M-unsplash.jpg" class="w3-image" style="width:100%">
+    </div> -->
 
     <!-- End page content -->
 </div>
@@ -148,6 +140,20 @@
 
 <!-- Footer -->
 <footer class="w3-center w3-black w3-padding-16">
+    <div class="socialMedia">
+        <h3> Find us on Social Media!</h5>
+            <br>
+            <!-- Add font awesome icons -->
+            <a href="#" class="fa fa-facebook"></a>
+            <a href="#" class="fa fa-twitter"></a>
+            <a href="#" class="fa fa-google"></a>
+            <a href="#" class="fa fa-linkedin"></a>
+            <a href="#" class="fa fa-youtube"></a>
+            <a href="#" class="fa fa-instagram"></a>
+            <a href="#" class="fa fa-pinterest"></a>
+    </div>
+
+    <h4>Simon Zhang Matrikelnummer: 000000 | Simon Oppermann Matrikelnummer: 0000000</h4>
 
 </footer>
 

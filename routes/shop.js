@@ -17,5 +17,6 @@ router.get('/confirmation', shopController.getConfirmation)
 router.get('/product-detail', shopController.getProductDetail);
 router.get('/about-us', shopController.getAboutUs);
 router.get('/contact', shopController.getContact);
+router.get('/schlaginstrumente', shopController.getSchlaginstrumente);
 
 module.exports = router;

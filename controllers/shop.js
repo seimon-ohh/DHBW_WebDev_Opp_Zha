@@ -1,4 +1,3 @@
-const {response} = require("express");
 exports.getIndex = (req, res) => {
     res.render('shop/index');
 }
@@ -31,4 +30,7 @@ exports.getAboutUs = (req, res)=>{
 }
 exports.getContact = (req, res)=>{
     res.render('shop/contact');
+}
+exports.getContact = (req, res)=>{
+    res.render('shop/schlaginstrumente');
 }
