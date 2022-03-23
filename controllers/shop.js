@@ -31,6 +31,12 @@ exports.getAboutUs = (req, res)=>{
 exports.getContact = (req, res)=>{
     res.render('shop/contact');
 }
-exports.getContact = (req, res)=>{
+exports.getBlasinstrumente = (req, res)=>{
+    res.render('shop/blasinstrumente');
+}
+exports.getSchlaginstrumente = (req, res)=>{
     res.render('shop/schlaginstrumente');
+}
+exports.getSaiteninstrumente = (req, res)=>{
+    res.render('shop/saiteninstrumente');
 }

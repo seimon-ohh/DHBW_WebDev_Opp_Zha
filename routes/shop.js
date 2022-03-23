@@ -17,6 +17,9 @@ router.get('/confirmation', shopController.getConfirmation)
 router.get('/product-detail', shopController.getProductDetail);
 router.get('/about-us', shopController.getAboutUs);
 router.get('/contact', shopController.getContact);
+router.get('/blasinstrumente', shopController.getBlasinstrumente);
 router.get('/schlaginstrumente', shopController.getSchlaginstrumente);
+router.get('/saiteninstrumente', shopController.getSaiteninstrumente);
+router.get('/login', shopController.getLogin);
 
 module.exports = router;
