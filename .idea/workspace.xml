@@ -2,27 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c9f7f835-6831-4bf8-baa2-e8e7d7370a83" name="Changes" comment="neue Startseite">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/DHBW_WebDev_Opp_Zha.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/watcherTasks.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/css/cart.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/css/login.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/shop/blasinstrumente.ejs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/shop/saiteninstrumente.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/shop.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/shop.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/scripts.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/scripts.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/shop.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/shop.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/includes/navigation.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/includes/navigation.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/shop/about-us.ejs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/shop/account.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/shop/account.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/shop/cart.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/shop/cart.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/shop/index.ejs.old" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/views/shop/login.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/shop/login.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/shop/product-categories.ejs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/shop/products.ejs" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,7 +94,7 @@
       <workItem from="1646922169910" duration="17487000" />
       <workItem from="1647957674897" duration="2165000" />
       <workItem from="1647959873678" duration="460000" />
-      <workItem from="1647960493239" duration="12221000" />
+      <workItem from="1647960493239" duration="19907000" />
     </task>
     <task id="LOCAL-00001" summary="First routing">
       <created>1646245000857</created>

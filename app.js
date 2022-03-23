@@ -1,17 +1,35 @@
-const path = require('path');
+
 require('http');
+const mysql = require('mysql');
 const express = require('express');
+const session = require('express-session');
+const path = require('path');
 const bodyParser = require('body-parser');
 
 const errorController = require('./controllers/error')
 
-const app = express();
 
+
+const app = express();
 app.set('view engine', 'ejs');
 app.set('views', 'views');
 
 const adminRoutes = require('./routes/admin');
 const shopRoutes = require('./routes/shop');
+
+exports.connection = mysql.createConnection({
+    host     : 'localhost',
+    user     : 'root',
+    password : '12345678',
+    database : 'nodelogin'
+});
+
+
+app.use(session({
+    secret: 'secret',
+    resave: true,
+    saveUninitialized: true
+}));
 
 
 

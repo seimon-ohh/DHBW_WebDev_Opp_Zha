@@ -22,4 +22,6 @@ router.get('/schlaginstrumente', shopController.getSchlaginstrumente);
 router.get('/saiteninstrumente', shopController.getSaiteninstrumente);
 router.get('/login', shopController.getLogin);
 
+router.post('/auth', shopController.postLogin);
+
 module.exports = router;
