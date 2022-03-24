@@ -1,0 +1,30 @@
+<%- include('../includes/head.ejs') %>
+<link rel="stylesheet" href="/css/login.css">
+</head>
+<body>
+
+<%- include('../includes/navigation.ejs') %>
+
+<div class="container">
+    <h1>Registrieren</h1>
+
+    <form action="" method="POST">
+        <label for="user_name">Name</label>
+        <input type="text" class="input" name="_name" id="user_name" placeholder="Bitte Namen eingeben">
+        <label for="user_email">Email</label>
+        <input type="email" class="input" name="_email" id="user_email" placeholder="Bitte Email eingeben">
+        <label for="user_pass">Passwort</label>
+        <input type="password" class="input" name="_password" id="user_pass" placeholder="Bitte Passwort eingeben">
+        <% if(typeof msg != 'undefined'){ %>
+            <div class="success-msg"><%= msg %></div><% }
+        if(typeof error !== 'undefined'){ %>
+            <div class="err-msg"><%= error %></div><% } %>
+        <input type="submit" value="Registrieren">
+        <div class="link"><a href="/login">Login</a></div>
+    </form>
+</div>
+</body>
+
+
+
+</html>
