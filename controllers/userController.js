@@ -1,4 +1,4 @@
-const { validationResult } = require("express-validator");
+const {validationResult} = require("express-validator");
 const bcrypt = require('bcryptjs');
 const dbConnection = require("../utils/dbConnection");
 
@@ -23,7 +23,7 @@ exports.registerPage = (req, res, next) => {
 // User Registration
 exports.register = async (req, res, next) => {
     const errors = validationResult(req);
-    const { body } = req;
+    const {body} = req;
 
     if (!errors.isEmpty()) {
         return res.render('shop/register', {
@@ -75,7 +75,7 @@ exports.loginPage = (req, res, next) => {
 exports.login = async (req, res, next) => {
 
     const errors = validationResult(req);
-    const { body } = req;
+    const {body} = req;
 
     if (!errors.isEmpty()) {
         return res.render('shop/login', {
@@ -105,8 +105,7 @@ exports.login = async (req, res, next) => {
         });
 
 
-    }
-    catch (e) {
+    } catch (e) {
         next(e);
     }
 
