@@ -9,14 +9,11 @@ const router = express.Router();
 router.get('/', shopController.getIndex);
 
 
-router.get('/products', shopController.getProducts);
+
 router.get('/cart', shopController.getCart);
 router.get('/account', shopController.getAccount);
 router.get('/checkout', shopController.getCheckout)
-router.get('/confirmation', shopController.getConfirmation)
-router.get('/product-detail', shopController.getProductDetail);
-router.get('/about-us', shopController.getAboutUs);
-router.get('/contact', shopController.getContact);
+router.get('/confirmation', shopController.getConfirmation);
 router.get('/blasinstrumente', shopController.getBlasinstrumente);
 router.get('/schlaginstrumente', shopController.getSchlaginstrumente);
 router.get('/saiteninstrumente', shopController.getSaiteninstrumente);

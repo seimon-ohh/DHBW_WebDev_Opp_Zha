@@ -9,7 +9,8 @@
             <a href="/#about" class="w3-bar-item w3-button">Über uns</a>
             <a href="/#contact" class="w3-bar-item w3-button">Kontakt</a>
             <a href="/cart" class="w3-bar-item w3-button">Warenkorb</a>
-            <a href="/login" class="w3-bar-item w3-button">Account</a>
+            <a href="<%= session.loggedin ? '/account':'/login' %>"  class="w3-bar-item w3-button">  <%= session.loggedin ? "Account":"Login"%>  </a>
+            <a href="/login" class="w3-bar-item w3-button"><%= session.loggedin ? "Logout":""%> </a> <!--TODO  auf ausloggen ändern-->
         </div>
     </div>
 </div>
