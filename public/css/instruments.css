@@ -2,8 +2,7 @@
   font-family: "Montserrat", sans-serif;
   margin: 90px;
 }
-
-/* .grid-container {
-  display: grid;
-  gap: 50px 100px;
-} */
+.w3-row {
+  margin-left: 4rem;
+  margin-right: 4rem;
+}
