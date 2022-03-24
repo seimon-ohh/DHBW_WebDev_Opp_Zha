@@ -1,5 +1,6 @@
 <%- include('../includes/head.ejs') %>
-<link rel="stylesheet" href="/css/instruments.css">
+
+<link rel="stylesheet" href="css/product-details.css">
 </head>
 
 <body>
@@ -8,68 +9,33 @@
 <!-- Page Content -->
 <div class="container">
 
-    <!-- Portfolio Item Heading -->
-    <h1 class="my-4">Page Heading
-        <small>Secondary Text</small>
-    </h1>
-
     <!-- Portfolio Item Row -->
-    <div class="row">
 
-        <div class="col-md-8">
-            <img class="img-fluid" src="https://via.placeholder.com/750x500" alt="">
+        <div class="w3-container w3-half">
+            <img class="img-fluid" src="/images/Notes.jpg" alt="" style width="100%;" height="50%">
         </div>
 
-        <div class="col-md-4">
-            <h3 class="my-3">Project Description</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque
-                urna varius vitae. Sed dui lorem, adipiscing in adipiscing et, interdum nec metus. Mauris ultricies,
-                justo eu convallis placerat, felis enim.</p>
-            <h3 class="my-3">Project Details</h3>
-            <ul>
-                <li>Lorem Ipsum</li>
-                <li>Dolor Sit Amet</li>
-                <li>Consectetur</li>
-                <li>Adipiscing Elit</li>
-            </ul>
+        <form action="" method="POST">
+        <div class="w3-container w3-half">
+          <h1> <input type="text" class="input" name="Titel" id="Titel" placeholder="Produkt Bild"> </h1>
+            <p> <input type="text" class="input" name="Beschreibung" id="Beschreibung" placeholder="Beschreibung. "> </p>
+            <h3>Preis pro Tag: <b> <input type="text" class="input" name="Preis" id="Preis" placeholder="Preis"> </b></h3> 
+           
+            <div class="product__leihdauer">
+                <label for="price">Leihdauer in Tage</label>
+                <input type="number" name="leihdauer" id="leihdauer" onchange="multipliziere()" step="1">
+                
+            </div>
+            <button class="w3-button w3-green"> Kaufen </button>
         </div>
-
-    </div>
-    <!-- /.row -->
-
-    <!-- Related Projects Row
-    <h3 class="my-4">Related Projects</h3>
-
-    <div class="row">
-
-        <div class="col-md-3 col-sm-6 mb-4">
-            <a href="#">
-                <img class="img-fluid" src="https://via.placeholder.com/500x300" alt="">
-            </a>
-        </div>
-
-        <div class="col-md-3 col-sm-6 mb-4">
-            <a href="#">
-                <img class="img-fluid" src="https://via.placeholder.com/500x300" alt="">
-            </a>
-        </div>
-
-        <div class="col-md-3 col-sm-6 mb-4">
-            <a href="#">
-                <img class="img-fluid" src="https://via.placeholder.com/500x300" alt="">
-            </a>
-        </div>
-
-        <div class="col-md-3 col-sm-6 mb-4">
-            <a href="#">
-                <img class="img-fluid" src="https://via.placeholder.com/500x300" alt="">
-            </a>
-        </div>
-
-    </div> -->
+        </form>
+    
     <!-- /.row -->
 
 </div>
+<!-- /.container -->
+
+
 <!-- /.container -->
 
 
@@ -84,7 +50,5 @@
         crossorigin="anonymous"></script>
 </body>
 
-
-<%- include('../includes/footer.ejs') %>
 
 </html>
