@@ -8,27 +8,23 @@ const bodyParser = require('body-parser');
 
 const errorController = require('./controllers/error')
 
-
+const adminRoutes = require('./routes/admin');
+const shopRoutes = require('./routes/shop');
 
 const app = express();
 app.set('view engine', 'ejs');
 app.set('views', 'views');
 
-const adminRoutes = require('./routes/admin');
-const shopRoutes = require('./routes/shop');
-
-exports.connection = mysql.createConnection({
-    host     : 'localhost',
-    user     : 'root',
-    password : '12345678',
-    database : 'nodelogin'
-});
 
 
 app.use(session({
-    secret: 'secret',
-    resave: true,
-    saveUninitialized: true
+    name: 'session',
+    secret: 'my_secret',
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+        maxAge: 3600 * 1000, // 1hr
+    }
 }));
 
 

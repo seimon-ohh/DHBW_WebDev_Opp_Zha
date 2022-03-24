@@ -10,14 +10,14 @@ exports.homePage = async (req, res, next) => {
         return res.redirect('/logout');
     }
 
-    res.render('home', {
+    res.render('/', {
         user: row[0]
     });
 }
 
 // Register Page
 exports.registerPage = (req, res, next) => {
-    res.render("register");
+    res.render('shop/register');
 };
 
 // User Registration
@@ -26,7 +26,7 @@ exports.register = async (req, res, next) => {
     const { body } = req;
 
     if (!errors.isEmpty()) {
-        return res.render('register', {
+        return res.render('shop/register', {
             error: errors.array()[0].msg
         });
     }
@@ -39,7 +39,7 @@ exports.register = async (req, res, next) => {
         );
 
         if (row.length >= 1) {
-            return res.render('register', {
+            return res.render('shop/register', {
                 error: 'This email already in use.'
             });
         }
@@ -52,12 +52,12 @@ exports.register = async (req, res, next) => {
         );
 
         if (rows.affectedRows !== 1) {
-            return res.render('register', {
+            return res.render('shop/register', {
                 error: 'Your registration has failed.'
             });
         }
 
-        res.render("register", {
+        res.render('shop/register', {
             msg: 'You have successfully registered.'
         });
 
@@ -68,7 +68,7 @@ exports.register = async (req, res, next) => {
 
 // Login Page
 exports.loginPage = (req, res, next) => {
-    res.render("login");
+    res.render('shop/login');
 };
 
 // Login User
@@ -78,7 +78,7 @@ exports.login = async (req, res, next) => {
     const { body } = req;
 
     if (!errors.isEmpty()) {
-        return res.render('login', {
+        return res.render('shop/login', {
             error: errors.array()[0].msg
         });
     }
@@ -88,7 +88,7 @@ exports.login = async (req, res, next) => {
         const [row] = await dbConnection.execute('SELECT * FROM `users` WHERE `email`=?', [body._email]);
 
         if (row.length != 1) {
-            return res.render('login', {
+            return res.render('shop/login', {
                 error: 'Invalid email address.'
             });
         }
@@ -100,7 +100,7 @@ exports.login = async (req, res, next) => {
             return res.redirect('/');
         }
 
-        res.render('login', {
+        res.render('shop/login', {
             error: 'Invalid Password.'
         });
 
