@@ -1,32 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c9f7f835-6831-4bf8-baa2-e8e7d7370a83" name="Changes" comment="neue Startseite">
-      <change afterPath="$PROJECT_DIR$/controllers/userController.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/dbConnection.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/shop/register.ejs" afterDir="false" />
+    <list default="true" id="c9f7f835-6831-4bf8-baa2-e8e7d7370a83" name="Changes" comment="Added new Signup and Register&#10;Backend not working">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/shop.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/shop.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.bin/alert" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.bin/alert" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.bin/ejs" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.bin/ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.bin/is-ci" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.bin/is-ci" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.bin/jake" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.bin/jake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.bin/mime" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.bin/mime" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.bin/nodemon" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.bin/nodemon" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.bin/nodetouch" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.bin/nodetouch" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.bin/nopt" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.bin/nopt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.bin/rc" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.bin/rc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.bin/semver" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.bin/semver" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/make-dir/node_modules/.bin/semver" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/make-dir/node_modules/.bin/semver" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/package-json/node_modules/.bin/semver" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/package-json/node_modules/.bin/semver" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/semver-diff/node_modules/.bin/semver" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/semver-diff/node_modules/.bin/semver" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/update-notifier/node_modules/.bin/semver" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/update-notifier/node_modules/.bin/semver" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/login.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/shop.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/shop.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/shop/login.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/shop/login.ejs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,7 +90,7 @@
       <workItem from="1646922169910" duration="17487000" />
       <workItem from="1647957674897" duration="2165000" />
       <workItem from="1647959873678" duration="460000" />
-      <workItem from="1647960493239" duration="34228000" />
+      <workItem from="1647960493239" duration="34404000" />
     </task>
     <task id="LOCAL-00001" summary="First routing">
       <created>1646245000857</created>
@@ -135,7 +113,14 @@
       <option name="project" value="LOCAL" />
       <updated>1647968452824</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Added new Signup and Register&#10;Backend not working">
+      <created>1648128931801</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1648128931801</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -156,6 +141,7 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="First routing" />
     <MESSAGE value="neue Startseite" />
-    <option name="LAST_COMMIT_MESSAGE" value="neue Startseite" />
+    <MESSAGE value="Added new Signup and Register&#10;Backend not working" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added new Signup and Register&#10;Backend not working" />
   </component>
 </project>
