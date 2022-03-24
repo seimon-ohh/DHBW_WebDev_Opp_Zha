@@ -20,7 +20,7 @@ router.get('/schlaginstrumente', shopController.getSchlaginstrumente);
 router.get('/saiteninstrumente', shopController.getSaiteninstrumente);
 router.get('/login', shopController.getLogin);
 router.get('/register', shopController.getRegister);
-router.get('/productdetail', shopController.getProductDetail);
+router.get('/productdetail', shopController.getProductDetail)
 
 //Login Logik
 const { body } = require("express-validator");
@@ -31,7 +31,7 @@ const {
     registerPage,
     login,
     loginPage,
-} = require('../../DHBW_WebDev_Opp_Zha/controllers/userController');
+} = require('../controllers/userController');
 
 const ifNotLoggedin = (req, res, next) => {
     if(!req.session.userID){
@@ -47,18 +47,18 @@ const ifLoggedin = (req,res,next) => {
     next();
 }
 
-router.get('/', ifNotLoggedin, homePage);
 
-router.get("/login", ifLoggedin, loginPage);
-router.post("/login",
+
+router.get('/login', ifLoggedin, loginPage);
+router.post('/login',
     ifLoggedin,
     [
-        body("_email", "Invalid email address")
+        body("_email", "Email nicht gültig")
             .notEmpty()
             .escape()
             .trim()
             .isEmail(),
-        body("_password", "The Password must be of minimum 4 characters length")
+        body("_password", "Passwort muss mind. 4 Zeichen lang sein")
             .notEmpty()
             .trim()
             .isLength({ min: 4 }),
@@ -66,22 +66,22 @@ router.post("/login",
     login
 );
 
-router.get("/signup", ifLoggedin, registerPage);
+router.get('/register', ifLoggedin, registerPage);
 router.post(
-    "/signup",
+    '/register',
     ifLoggedin,
     [
-        body("_name", "The name must be of minimum 3 characters length")
+        body("_name", "Name muss mind. 3 Zeichen lang sein")
             .notEmpty()
             .escape()
             .trim()
             .isLength({ min: 3 }),
-        body("_email", "Invalid email address")
+        body("_email", "Email nicht gültig")
             .notEmpty()
             .escape()
             .trim()
             .isEmail(),
-        body("_password", "The Password must be of minimum 4 characters length")
+        body("_password", "Passwort muss mind. 4 Zeichen lang sein")
             .notEmpty()
             .trim()
             .isLength({ min: 4 }),
@@ -93,7 +93,7 @@ router.get('/logout', (req, res, next) => {
     req.session.destroy((err) => {
         next(err);
     });
-    res.redirect('/login');
+    res.redirect('/');
 });
 
 module.exports = router;
