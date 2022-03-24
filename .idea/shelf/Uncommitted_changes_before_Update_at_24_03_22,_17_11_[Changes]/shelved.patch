@@ -1,0 +1,154 @@
+Index: routes/shop.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>const path = require('path');\n\nconst express = require('express');\n\nconst shopController = require('../../DHBW_WebDev_Opp_Zha/controllers/shop');\nconst userController = require('../../DHBW_WebDev_Opp_Zha/controllers/userController');\n\nconst router = express.Router();\n\nrouter.get('/', shopController.getIndex);\n\n\n\nrouter.get('/cart', shopController.getCart);\nrouter.get('/account', shopController.getAccount);\nrouter.get('/checkout', shopController.getCheckout)\nrouter.get('/confirmation', shopController.getConfirmation);\nrouter.get('/blasinstrumente', shopController.getBlasinstrumente);\nrouter.get('/schlaginstrumente', shopController.getSchlaginstrumente);\nrouter.get('/saiteninstrumente', shopController.getSaiteninstrumente);\nrouter.get('/login', shopController.getLogin);\nrouter.get('/register', shopController.getRegister);\nrouter.get('/productdetail', shopController.getProductDetail)\n\n//Login Logik\nconst { body } = require(\"express-validator\");\n\nconst {\n    homePage,\n    register,\n    registerPage,\n    login,\n    loginPage,\n} = require('../controllers/userController');\n\nconst ifNotLoggedin = (req, res, next) => {\n    if(!req.session.userID){\n        return res.redirect('/login');\n    }\n    next();\n}\n\nconst ifLoggedin = (req,res,next) => {\n    if(req.session.userID){\n        return res.redirect('/');\n    }\n    next();\n}\n\n\n\nrouter.get('/login', ifLoggedin, loginPage);\nrouter.post('/login',\n    ifLoggedin,\n    [\n        body(\"_email\", \"Email nicht gültig\")\n            .notEmpty()\n            .escape()\n            .trim()\n            .isEmail(),\n        body(\"_password\", \"Passwort muss mind. 4 Zeichen lang sein\")\n            .notEmpty()\n            .trim()\n            .isLength({ min: 4 }),\n    ],\n    login\n);\n\nrouter.get('/register', ifLoggedin, registerPage);\nrouter.post(\n    '/register',\n    ifLoggedin,\n    [\n        body(\"_name\", \"Name muss mind. 3 Zeichen lang sein\")\n            .notEmpty()\n            .escape()\n            .trim()\n            .isLength({ min: 3 }),\n        body(\"_email\", \"Email nicht gültig\")\n            .notEmpty()\n            .escape()\n            .trim()\n            .isEmail(),\n        body(\"_password\", \"Passwort muss mind. 4 Zeichen lang sein\")\n            .notEmpty()\n            .trim()\n            .isLength({ min: 4 }),\n    ],\n    register\n);\n\nrouter.get('/logout', (req, res, next) => {\n    req.session.destroy((err) => {\n        next(err);\n    });\n    res.redirect('/');\n});\n\nmodule.exports = router;
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/routes/shop.js b/routes/shop.js
+--- a/routes/shop.js	(revision 01e649aebbe22ab6e6444066cbfbfb99d1bae552)
++++ b/routes/shop.js	(date 1648138208558)
+@@ -44,6 +44,8 @@
+     if(req.session.userID){
+         return res.redirect('/');
+     }
++
++
+     next();
+ }
+ 
+@@ -64,6 +66,7 @@
+             .isLength({ min: 4 }),
+     ],
+     login
++
+ );
+ 
+ router.get('/register', ifLoggedin, registerPage);
+Index: js/scripts.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/js/scripts.js b/js/scripts.js.old
+rename from js/scripts.js
+rename to js/scripts.js.old
+--- a/js/scripts.js	(revision 01e649aebbe22ab6e6444066cbfbfb99d1bae552)
++++ b/js/scripts.js.old	(date 1648136034175)
+@@ -36,7 +36,7 @@
+             target: '#mainNav',
+             offset: 74,
+         });
+-    };
++    }
+ 
+     // Collapse responsive navbar when toggler is visible
+     const navbarToggler = document.body.querySelector('.navbar-toggler');
+Index: controllers/userController.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>const { validationResult } = require(\"express-validator\");\nconst bcrypt = require('bcryptjs');\nconst dbConnection = require(\"../utils/dbConnection\");\n\n// Home Page\nexports.homePage = async (req, res, next) => {\n    const [row] = await dbConnection.execute(\"SELECT * FROM `users` WHERE `id`=?\", [req.session.userID]);\n\n    if (row.length !== 1) {\n        return res.redirect('/logout');\n    }\n\n    res.render('/', {\n        user: row[0]\n    });\n}\n\n// Register Page\nexports.registerPage = (req, res, next) => {\n    res.render('shop/register');\n};\n\n// User Registration\nexports.register = async (req, res, next) => {\n    const errors = validationResult(req);\n    const { body } = req;\n\n    if (!errors.isEmpty()) {\n        return res.render('shop/register', {\n            error: errors.array()[0].msg\n        });\n    }\n\n    try {\n\n        const [row] = await dbConnection.execute(\n            \"SELECT * FROM `users` WHERE `email`=?\",\n            [body._email]\n        );\n\n        if (row.length >= 1) {\n            return res.render('shop/register', {\n                error: 'This email already in use.'\n            });\n        }\n\n        const hashPass = await bcrypt.hash(body._password, 12);\n\n        const [rows] = await dbConnection.execute(\n            \"INSERT INTO `users`(`name`,`email`,`password`) VALUES(?,?,?)\",\n            [body._name, body._email, hashPass]\n        );\n\n        if (rows.affectedRows !== 1) {\n            return res.render('shop/register', {\n                error: 'Your registration has failed.'\n            });\n        }\n\n        res.render('shop/register', {\n            msg: 'You have successfully registered.'\n        });\n\n    } catch (e) {\n        next(e);\n    }\n};\n\n// Login Page\nexports.loginPage = (req, res, next) => {\n    res.render('shop/login');\n};\n\n// Login User\nexports.login = async (req, res, next) => {\n\n    const errors = validationResult(req);\n    const { body } = req;\n\n    if (!errors.isEmpty()) {\n        return res.render('shop/login', {\n            error: errors.array()[0].msg\n        });\n    }\n\n    try {\n\n        const [row] = await dbConnection.execute('SELECT * FROM `users` WHERE `email`=?', [body._email]);\n\n        if (row.length != 1) {\n            return res.render('shop/login', {\n                error: 'Invalid email address.'\n            });\n        }\n\n        const checkPass = await bcrypt.compare(body._password, row[0].password);\n\n        if (checkPass === true) {\n            req.session.userID = row[0].id;\n            return res.redirect('/');\n        }\n\n        res.render('shop/login', {\n            error: 'Invalid Password.'\n        });\n\n\n    }\n    catch (e) {\n        next(e);\n    }\n\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/controllers/userController.js b/controllers/userController.js
+--- a/controllers/userController.js	(revision 01e649aebbe22ab6e6444066cbfbfb99d1bae552)
++++ b/controllers/userController.js	(date 1648136917311)
+@@ -104,10 +104,10 @@
+             error: 'Invalid Password.'
+         });
+ 
+-
+     }
+     catch (e) {
+         next(e);
+     }
+ 
++
+ }
+\ No newline at end of file
+Index: public/css/login.css
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>*,\n*::before,\n*::after {\n    box-sizing: border-box;\n}\n\nhtml {\n    -webkit-text-size-adjust: 100%;\n    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);\n    font-size: 16px;\n}\n\nbody {\n    background-color: #f7f7f7;\n    font-family: \"Ubuntu\", sans-serif;\n    margin: 0;\n    padding: 0;\n    color: #222222;\n    overflow-x: hidden;\n    overflow-wrap: break-word;\n    -moz-osx-font-smoothing: grayscale;\n    -webkit-font-smoothing: antialiased;\n\n}\n\n.container {\n    background-color: white;\n    max-width: 450px;\n    margin: 120px auto;\n    padding: 40px;\n    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175);\n    border-radius: 3px;\n}\n\n.container h1 {\n    margin: 0 0 40px 0;\n    text-align: center;\n}\n\ninput,\nbutton {\n    font-family: \"Ubuntu\", sans-serif;\n    outline: none;\n    font-size: 1rem;\n}\n\n.input {\n    padding: 10px;\n    width: 100%;\n    margin-bottom: 10px;\n    border: 1px solid #bbbbbb;\n    border-radius: 3px;\n}\n\n.input:hover {\n    border-color: #999999;\n}\n\n.input:focus {\n    border-color: #0d6efd;\n}\n\n[type=\"submit\"] {\n    background: #0d6efd;\n    color: white;\n    border: 1px solid rgba(0, 0, 0, 0.175);\n    border-radius: 3px;\n    padding: 12px 0;\n    cursor: pointer;\n    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);\n    margin-top: 5px;\n    font-weight: bold;\n    width: 100%;\n}\n\n[type=\"submit\"]:hover {\n    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);\n}\n\nlabel {\n    font-weight: bold;\n}\n\n.link {\n    margin-top: 10px;\n    text-align: center;\n}\n\n.link a {\n    color: #0d6efd;\n}\n\n.success-msg,\n.err-msg {\n    color: #dc3545;\n    border: 1px solid #dc3545;\n    padding: 10px;\n    border-radius: 3px;\n}\n\n.success-msg {\n    color: #ffffff;\n    background-color: #20c997;\n    border-color: rgba(0, 0, 0, 0.1);\n}\n\n.profile {\n    text-align: center;\n}\n\n.profile .img {\n    font-size: 50px;\n}\n\n.profile h2 {\n    margin-bottom: 3px;\n    text-transform: capitalize;\n}\n\n.profile span {\n    display: block;\n    margin-bottom: 20px;\n    color: #999999;\n}\n\n.profile a {\n    display: inline-block;\n    padding: 10px 20px;\n    text-decoration: none;\n    border: 1px solid #dc3545;\n    color: #dc3545;\n    border-radius: 3px;\n}\n\n.profile a:hover {\n    border-color: rgba(0, 0, 0, 0.1);\n    background-color: #dc3545;\n    color: #ffffff;\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/public/css/login.css b/public/css/login.css
+--- a/public/css/login.css	(revision 01e649aebbe22ab6e6444066cbfbfb99d1bae552)
++++ b/public/css/login.css	(date 1648137145987)
+@@ -57,11 +57,11 @@
+ }
+ 
+ .input:focus {
+-    border-color: #0d6efd;
++    border-color: #ffc805;
+ }
+ 
+ [type="submit"] {
+-    background: #0d6efd;
++    background: #ffc805;
+     color: white;
+     border: 1px solid rgba(0, 0, 0, 0.175);
+     border-radius: 3px;
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"c9f7f835-6831-4bf8-baa2-e8e7d7370a83\" name=\"Changes\" comment=\"Added route to product-detail\">\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/app.js\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/app.js\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/controllers/userController.js\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/controllers/userController.js\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/routes/shop.js\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/routes/shop.js\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/views/includes/navigation.ejs\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/views/includes/navigation.ejs\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"FileTemplateManagerImpl\">\n    <option name=\"RECENT_TEMPLATES\">\n      <list>\n        <option value=\"CSS File\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"MarkdownSettingsMigration\">\n    <option name=\"stateVersion\" value=\"1\" />\n  </component>\n  <component name=\"ProblemsViewState\">\n    <option name=\"selectedTabId\" value=\"CurrentFile\" />\n  </component>\n  <component name=\"ProjectId\" id=\"25plzunxWRvAJ9ums7TIop9pCeF\" />\n  <component name=\"ProjectLevelVcsManager\">\n    <OptionsSetting value=\"false\" id=\"Update\" />\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\n  </component>\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\">\n    <property name=\"ASKED_ADD_EXTERNAL_FILES\" value=\"true\" />\n    <property name=\"ASKED_SHARE_PROJECT_CONFIGURATION_FILES\" value=\"true\" />\n    <property name=\"RunOnceActivity.OpenProjectViewOnStart\" value=\"true\" />\n    <property name=\"RunOnceActivity.ShowReadmeOnStart\" value=\"true\" />\n    <property name=\"SHARE_PROJECT_CONFIGURATION_FILES\" value=\"true\" />\n    <property name=\"WebServerToolWindowFactoryState\" value=\"false\" />\n    <property name=\"dart.analysis.tool.window.visible\" value=\"false\" />\n    <property name=\"last_opened_file_path\" value=\"$PROJECT_DIR$/views/shop\" />\n    <property name=\"list.type.of.created.stylesheet\" value=\"CSS\" />\n    <property name=\"nodejs_package_manager_path\" value=\"npm\" />\n    <property name=\"settings.editor.selected.configurable\" value=\"watcher.settings\" />\n    <property name=\"vue.rearranger.settings.migration\" value=\"true\" />\n  </component>\n  <component name=\"RecentsManager\">\n    <key name=\"CopyFile.RECENT_KEYS\">\n      <recent name=\"$PROJECT_DIR$/views/shop\" />\n      <recent name=\"$PROJECT_DIR$\" />\n    </key>\n    <key name=\"MoveFile.RECENT_KEYS\">\n      <recent name=\"$PROJECT_DIR$/controllers\" />\n      <recent name=\"$PROJECT_DIR$/views/shop\" />\n      <recent name=\"$PROJECT_DIR$/public/images\" />\n      <recent name=\"$PROJECT_DIR$/js\" />\n      <recent name=\"$PROJECT_DIR$/public/css\" />\n    </key>\n  </component>\n  <component name=\"RunManager\">\n    <configuration name=\"run\" type=\"js.build_tools.npm\" nameIsGenerated=\"true\">\n      <package-json value=\"$PROJECT_DIR$/package.json\" />\n      <command value=\"run\" />\n      <scripts>\n        <script value=\"start\" />\n      </scripts>\n      <node-interpreter value=\"project\" />\n      <envs />\n      <method v=\"2\" />\n    </configuration>\n  </component>\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"c9f7f835-6831-4bf8-baa2-e8e7d7370a83\" name=\"Changes\" comment=\"\" />\n      <created>1646232176982</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1646232176982</updated>\n      <workItem from=\"1646232178101\" duration=\"91000\" />\n      <workItem from=\"1646239194878\" duration=\"15464000\" />\n      <workItem from=\"1646333261493\" duration=\"8964000\" />\n      <workItem from=\"1646401624844\" duration=\"2375000\" />\n      <workItem from=\"1646922169910\" duration=\"17487000\" />\n      <workItem from=\"1647957674897\" duration=\"2165000\" />\n      <workItem from=\"1647959873678\" duration=\"460000\" />\n      <workItem from=\"1647960493239\" duration=\"39523000\" />\n    </task>\n    <task id=\"LOCAL-00001\" summary=\"First routing\">\n      <created>1646245000857</created>\n      <option name=\"number\" value=\"00001\" />\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1646245000857</updated>\n    </task>\n    <task id=\"LOCAL-00002\" summary=\"neue Startseite\">\n      <created>1647952953148</created>\n      <option name=\"number\" value=\"00002\" />\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1647952953148</updated>\n    </task>\n    <task id=\"LOCAL-00003\" summary=\"neue Startseite\">\n      <created>1647968452824</created>\n      <option name=\"number\" value=\"00003\" />\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1647968452824</updated>\n    </task>\n    <task id=\"LOCAL-00004\" summary=\"Added new Signup and Register&#10;Backend not working\">\n      <created>1648128931801</created>\n      <option name=\"number\" value=\"00004\" />\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1648128931801</updated>\n    </task>\n    <task id=\"LOCAL-00005\" summary=\"Added route to product-detail\">\n      <created>1648129100132</created>\n      <option name=\"number\" value=\"00005\" />\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1648129100132</updated>\n    </task>\n    <option name=\"localTasksCounter\" value=\"6\" />\n    <servers />\n  </component>\n  <component name=\"TypeScriptGeneratedFilesManager\">\n    <option name=\"version\" value=\"3\" />\n  </component>\n  <component name=\"Vcs.Log.Tabs.Properties\">\n    <option name=\"TAB_STATES\">\n      <map>\n        <entry key=\"MAIN\">\n          <value>\n            <State />\n          </value>\n        </entry>\n      </map>\n    </option>\n  </component>\n  <component name=\"VcsManagerConfiguration\">\n    <option name=\"ADD_EXTERNAL_FILES_SILENTLY\" value=\"true\" />\n    <MESSAGE value=\"First routing\" />\n    <MESSAGE value=\"neue Startseite\" />\n    <MESSAGE value=\"Added new Signup and Register&#10;Backend not working\" />\n    <MESSAGE value=\"Added route to product-detail\" />\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Added route to product-detail\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 01e649aebbe22ab6e6444066cbfbfb99d1bae552)
++++ b/.idea/workspace.xml	(date 1648138208934)
+@@ -1,12 +1,12 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+   <component name="ChangeListManager">
+-    <list default="true" id="c9f7f835-6831-4bf8-baa2-e8e7d7370a83" name="Changes" comment="Added route to product-detail">
++    <list default="true" id="c9f7f835-6831-4bf8-baa2-e8e7d7370a83" name="Changes" comment="Login/signup works">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/controllers/userController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/userController.js" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/js/scripts.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/scripts.js.old" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/public/css/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/login.css" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/routes/shop.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/shop.js" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/views/includes/navigation.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/includes/navigation.ejs" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -92,7 +92,7 @@
+       <workItem from="1646922169910" duration="17487000" />
+       <workItem from="1647957674897" duration="2165000" />
+       <workItem from="1647959873678" duration="460000" />
+-      <workItem from="1647960493239" duration="39523000" />
++      <workItem from="1647960493239" duration="42851000" />
+     </task>
+     <task id="LOCAL-00001" summary="First routing">
+       <created>1646245000857</created>
+@@ -129,7 +129,14 @@
+       <option name="project" value="LOCAL" />
+       <updated>1648129100132</updated>
+     </task>
+-    <option name="localTasksCounter" value="6" />
++    <task id="LOCAL-00006" summary="Login/signup works">
++      <created>1648135695995</created>
++      <option name="number" value="00006" />
++      <option name="presentableId" value="LOCAL-00006" />
++      <option name="project" value="LOCAL" />
++      <updated>1648135695995</updated>
++    </task>
++    <option name="localTasksCounter" value="7" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -152,6 +159,7 @@
+     <MESSAGE value="neue Startseite" />
+     <MESSAGE value="Added new Signup and Register&#10;Backend not working" />
+     <MESSAGE value="Added route to product-detail" />
+-    <option name="LAST_COMMIT_MESSAGE" value="Added route to product-detail" />
++    <MESSAGE value="Login/signup works" />
++    <option name="LAST_COMMIT_MESSAGE" value="Login/signup works" />
+   </component>
+ </project>
+\ No newline at end of file
