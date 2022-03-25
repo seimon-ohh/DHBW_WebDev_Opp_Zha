@@ -12,21 +12,32 @@
     <!-- Portfolio Item Row -->
 
         <div class="w3-container w3-half">
-            <img class="img-fluid" src="/images/Notes.jpg" alt="" style width="100%;" height="50%">
+            <img class="img-fluid" src="/images/Klavier.jpg" alt="" style width="100%;" height="50%">
         </div>
 
         <form action="" method="POST">
         <div class="w3-container w3-half">
-          <h1> <input type="text" class="input" name="Titel" id="Titel" placeholder="Produkt Bild"> </h1>
-            <p> <input type="text" class="input" name="Beschreibung" id="Beschreibung" placeholder="Beschreibung. "> </p>
-            <h3>Preis pro Tag: <b> <input type="text" class="input" name="Preis" id="Preis" placeholder="Preis"> </b></h3> 
+          <h1> Klavier </h1>
+            <p> Was gibts besser als ein frisch gestimmtes Klavier. Baujahr 2003 und im guten Zustand. Wenn ihr uns nicht glaubt, hört kurz rein!
+            </p>
+            <br>
+            <audio controls>
+                <source src="/images/The Joint is Jumpin - Joel Cummins.mp3" type="audio/ogg">
+                <source src="/images/The Joint is Jumpin - Joel Cummins.mp3"" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+            <br>
+            <h3>Preis pro Tag: <b> 20.99€ </b></h3> 
+            <br>
            
             <div class="product__leihdauer">
                 <label for="price">Leihdauer in Tage</label>
                 <input type="number" name="leihdauer" id="leihdauer" onchange="multipliziere()" step="1">
-                
             </div>
-            <button class="w3-button w3-green"> Kaufen </button>
+            <br>
+            <h4>Gesamtkosten: 200€</h4>
+            <br>
+            <button class="w3-button w3-green"> Leihen </button>
         </div>
         </form>
     

@@ -12,6 +12,7 @@
   max-width: 300px;
   margin: auto;
   text-align: center;
+  object-fit: cover;
   font-family: arial;
 }
 
