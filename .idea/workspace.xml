@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c9f7f835-6831-4bf8-baa2-e8e7d7370a83" name="Changes" comment="EJS tags from Sessiondata not working">
+    <list default="true" id="c9f7f835-6831-4bf8-baa2-e8e7d7370a83" name="Changes" comment="login style changed">
+      <change afterPath="$PROJECT_DIR$/public/css/checkout.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/scripts.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/scripts.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/login.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/shop/checkout.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/shop/checkout.ejs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -134,7 +134,14 @@
       <option name="project" value="LOCAL" />
       <updated>1648140965954</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="login style changed">
+      <created>1648199095469</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1648199095469</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -158,6 +165,7 @@
     <MESSAGE value="Added new Signup and Register&#10;Backend not working" />
     <MESSAGE value="Added route to product-detail" />
     <MESSAGE value="EJS tags from Sessiondata not working" />
-    <option name="LAST_COMMIT_MESSAGE" value="EJS tags from Sessiondata not working" />
+    <MESSAGE value="login style changed" />
+    <option name="LAST_COMMIT_MESSAGE" value="login style changed" />
   </component>
 </project>
