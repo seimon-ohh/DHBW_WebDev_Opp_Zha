@@ -9,8 +9,6 @@ const router = express.Router();
 
 router.get('/', shopController.getIndex);
 
-
-
 router.get('/cart', shopController.getCart);
 router.get('/account', shopController.getAccount);
 router.get('/checkout', shopController.getCheckout)
@@ -50,6 +48,7 @@ const ifLoggedin = (req,res,next) => {
 
 
 router.get('/login', ifLoggedin, loginPage);
+
 router.post('/login',
     ifLoggedin,
     [
