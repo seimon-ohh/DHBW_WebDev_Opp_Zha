@@ -27,17 +27,20 @@
                 Your browser does not support the audio element.
             </audio>
             <br>
-            <h3>Preis pro Tag: <b> 20.99€ </b></h3> 
+            <h3>Preis pro Tag: <b id="price"> 20.99 </b></h3>
             <br>
            
             <div class="product__leihdauer">
                 <label for="price">Leihdauer in Tage</label>
-                <input type="number" name="leihdauer" id="leihdauer" onchange="multipliziere()" step="1">
+                <input type="number" name="leihdauer" id="leihdauer" onchange="calculate()" step="1">
             </div>
             <br>
-            <h4>Gesamtkosten: 200€</h4>
+            <h4>Gesamtkosten: <input type="text" id="sum"></h4>
             <br>
-            <button class="w3-button w3-green"> Leihen </button>
+            <a href="/cart">
+            <p> Leihen </p>
+
+            </a>
         </div>
         </form>
     
@@ -48,7 +51,15 @@
 
 
 <!-- /.container -->
+<script type="text/javascript">
+    function calculate() {
+        let price = document.getElementById('price').textContent;
+        let days = Number(document.getElementById('leihdauer').value);
+        let sum = document.getElementById('sum');
+        sum.value = price*days;
 
+    }
+</script>
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"

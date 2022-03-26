@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c9f7f835-6831-4bf8-baa2-e8e7d7370a83" name="Changes" comment="checkout page">
+    <list default="true" id="c9f7f835-6831-4bf8-baa2-e8e7d7370a83" name="Changes" comment="update index">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/checkout.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/checkout.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/shop.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/shop.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/shop.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/shop.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/admin.js.old" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/shop/cart.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/shop/cart.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/shop/checkout.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/shop/checkout.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/shop/index.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/shop/index.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/shop/product-detail.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/shop/product-detail.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/shop/schlaginstrumente.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/shop/schlaginstrumente.ejs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -150,7 +152,14 @@
       <option name="project" value="LOCAL" />
       <updated>1648207880008</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="update index">
+      <created>1648231507372</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1648231507372</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -176,6 +185,7 @@
     <MESSAGE value="EJS tags from Sessiondata not working" />
     <MESSAGE value="login style changed" />
     <MESSAGE value="checkout page" />
-    <option name="LAST_COMMIT_MESSAGE" value="checkout page" />
+    <MESSAGE value="update index" />
+    <option name="LAST_COMMIT_MESSAGE" value="update index" />
   </component>
 </project>
