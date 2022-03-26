@@ -18,7 +18,8 @@ router.get('/schlaginstrumente', shopController.getSchlaginstrumente);
 router.get('/saiteninstrumente', shopController.getSaiteninstrumente);
 router.get('/login', shopController.getLogin);
 router.get('/register', shopController.getRegister);
-router.get('/productdetail', shopController.getProductDetail)
+router.get('/productdetail', shopController.getProductDetail);
+router.get('/confirmation', shopController.getConfirmation);
 
 //Login Logik
 const { body } = require("express-validator");

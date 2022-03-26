@@ -40,7 +40,7 @@ exports.register = async (req, res, next) => {
 
         if (row.length >= 1) {
             return res.render('shop/register', {
-                error: 'This email already in use.'
+                error: 'Diese Email wird bereits verwendet'
             });
         }
 
@@ -53,12 +53,12 @@ exports.register = async (req, res, next) => {
 
         if (rows.affectedRows !== 1) {
             return res.render('shop/register', {
-                error: 'Your registration has failed.'
+                error: 'Registrierung fehlgeschlagen'
             });
         }
 
         res.render('shop/register', {
-            msg: 'You have successfully registered.'
+            msg: 'Registrierung erfolgreich!'
         });
 
     } catch (e) {
@@ -89,7 +89,7 @@ exports.login = async (req, res, next) => {
 
         if (row.length != 1) {
             return res.render('shop/login', {
-                error: 'Invalid email address.'
+                error: 'Email Adresse ungülitg'
             });
         }
 
@@ -101,7 +101,7 @@ exports.login = async (req, res, next) => {
         }
 
         res.render('shop/login', {
-            error: 'Invalid Password.'
+            error: 'Passwort ungültig'
         });
 
 
