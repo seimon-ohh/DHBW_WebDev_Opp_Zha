@@ -1,16 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c9f7f835-6831-4bf8-baa2-e8e7d7370a83" name="Changes" comment="cleaned structure">
-      <change afterPath="$PROJECT_DIR$/public/css/confirmation.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/shop/confirmation.ejs" afterDir="false" />
+    <list default="true" id="c9f7f835-6831-4bf8-baa2-e8e7d7370a83" name="Changes" comment="update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/shop.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/shop.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/userController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/userController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/checkout.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/checkout.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/shop.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/shop.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/shop/checkout.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/shop/checkout.ejs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +42,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="dart.analysis.tool.window.visible" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/views/shop" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
@@ -97,6 +89,9 @@
       <workItem from="1647957674897" duration="2165000" />
       <workItem from="1647959873678" duration="460000" />
       <workItem from="1647960493239" duration="39523000" />
+      <workItem from="1648566937155" duration="4901000" />
+      <workItem from="1648642005981" duration="58000" />
+      <workItem from="1648642217805" duration="16000" />
     </task>
     <task id="LOCAL-00001" summary="First routing">
       <created>1646245000857</created>
@@ -175,7 +170,21 @@
       <option name="project" value="LOCAL" />
       <updated>1648329545637</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="added confirmation">
+      <created>1648331257023</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1648331257023</updated>
+    </task>
+    <task id="LOCAL-00013" summary="update">
+      <created>1648642039239</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1648642039239</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -204,6 +213,8 @@
     <MESSAGE value="update index" />
     <MESSAGE value="instruments-&gt;schlaginstrumente-&gt;Klavier-&gt;detail-&gt;cart-&gt;checkout" />
     <MESSAGE value="cleaned structure" />
-    <option name="LAST_COMMIT_MESSAGE" value="cleaned structure" />
+    <MESSAGE value="added confirmation" />
+    <MESSAGE value="update" />
+    <option name="LAST_COMMIT_MESSAGE" value="update" />
   </component>
 </project>
